@@ -1,4 +1,4 @@
-package com.vopolski;
+package com.vopolski.car;
 
 public class Car {
 
@@ -38,17 +38,17 @@ public class Car {
             result += "<small>" + brand + "</small>";
 
             for (int i = 0; i < difference; i++) {
-                result += "&nbsp;";
+                result += "_";
             }
 
         }
 
         if (model != "") {
-            result += "<small>" + model + "</small>" + "&nbsp; &nbsp; &nbsp; &nbsp;";
+            result += "<small>" + model + "</small>" + "&nbsp;&nbsp;&nbsp;&nbsp;";
         }
 
         if (color != "") {
-            result += "<small>" + color + "</small>" + "&nbsp; &nbsp; &nbsp; &nbsp;";
+            result += "<small>" + color + "</small>" + "&nbsp;&nbsp;&nbsp;&nbsp;";
         }
 
         if (year != "") {

@@ -7,22 +7,24 @@
       xmlns:ui = "http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-
 <style type="text/css">
-    .ui-widget, .ui-widget .ui-widget {
+    .ui-widget.ui-widget .ui-widget {
         /*font-size: 50% !important;*/
-        font-family: Lucida Console, monospace;
+        /*font-family: Lucida Console, monospace;*/
+        font-family: Arial, sans-serif;
+        font-size: 13px;
     }
 
-    /*.ui-tree.ui-tree-horizontal .ui-tree-toggler {*/
-        /*visibility: hidden;*/
-    /*}*/
+    .ui-tree.ui-tree-horizontal .ui-tree-toggler {
+        visibility: hidden;
+    }
 </style>
 
 <ui:param name = "title" value = "Best Selling Cars" />
 
 <h:head>
     <title>#{title}</title>
+
 </h:head>
 <h:body>
     <p:layout fullPage="true">
@@ -30,21 +32,21 @@
             <h:form id="form1">
                 <h:outputText value="Left content" />
                 <div id="mainTableDiv" class="inputfirst" >
-                    <p:tree id="tree1" value="#{treeDNDView.root1}" var="node" selectionMode="single"
-                            selection="#{treeDNDView.selectedNode1}"
+                    <p:tree id="tree1" value="#{productView.root1}" var="node" selectionMode="single"
+                            selection="#{productView.selectedNode1}"
                             draggable="true" droppable="true" dragdropScope="demo" scrollable="true" style="width: auto"
                             scrollHeight="630" widgetVar="tree1" styleClass="ui-tree">
 
-                        <p:ajax event="dragdrop" listener="#{treeDNDView.onDragDrop}" />
-                        <p:ajax event="select" listener="#{treeDNDView.onNodeSelect}"
-                                update="form2:brand form2:color form2:year form2:id form2:model :form1:tree1 @this" dynamic="true"/>
+                        <p:ajax event="dragdrop" listener="#{productView.onDragDrop}" />
+                        <p:ajax event="select" listener="#{productView.onNodeSelect}"
+                                update="form2:name form2:type form2:profile  form2:value :form1:tree1 @this" dynamic="true"/>
                         <p:treeNode>
                             <h:outputText value="#{node}" escape="false"/>
                         </p:treeNode>
                     </p:tree>
                 </div>
                 <div id="buttonPanel">
-                    <p:commandButton value="Select" id="ajax" update="form2:brand" actionListener="#{treeDNDView.buttonAction}" styleClass="ui-priority-primary" />
+                    <p:commandButton value="Select" id="ajax" update="form2:name" actionListener="#{productView.buttonAction}" styleClass="ui-priority-primary" />
                 </div>
             </h:form>
         </p:layoutUnit>
@@ -52,16 +54,14 @@
             <h:form id="form2">
                 <h:outputText value="Center Content" />
                 <p:panelGrid columns="1" layout="grid">
-                    <p:outputLabel value="Brand:" for="brand" />
-                    <p:inputText id="brand" value="#{treeDNDView.brand}" />
-                    <p:outputLabel value="Model:" for="model" />
-                    <p:inputText id="model" value="#{treeDNDView.model}" />
-                    <p:outputLabel value="Color:" for="color" />
-                    <p:inputText id="color" value="#{treeDNDView.color}" />
-                    <p:outputLabel value="Year:" for="year" />
-                    <p:inputText id="year" value="#{treeDNDView.year}" />
-                    <p:outputLabel value="Id:" for="id" />
-                    <p:inputText id="id" value="#{treeDNDView.id}" />
+                    <p:outputLabel value="Name:" for="name" />
+                    <p:inputText id="name" value="#{productView.name}" />
+                    <p:outputLabel value="Type:" for="type" />
+                    <p:inputText id="type" value="#{productView.type}" />
+                    <p:outputLabel value="Profile:" for="profile" />
+                    <p:inputText id="profile" value="#{productView.profile}" />
+                    <p:outputLabel value="Value:" for="value" />
+                    <p:inputText id="value" value="#{productView.value}" />
                 </p:panelGrid>
             </h:form>
         </p:layoutUnit>

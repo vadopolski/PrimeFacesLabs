@@ -1,4 +1,4 @@
-package com.vopolski;
+package com.vopolski.car;
 
 import java.io.Serializable;
 import java.util.List;
@@ -169,7 +169,4 @@ public class DragDropView implements Serializable {
         }
     }
 
-    public void onNodeSelectListe(NodeSelectEvent event) {
-
-    }
 }
