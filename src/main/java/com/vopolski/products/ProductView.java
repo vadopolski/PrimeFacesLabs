@@ -4,8 +4,10 @@ import com.vopolski.car.Car;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.event.TreeDragDropEvent;
@@ -26,6 +28,8 @@ public class ProductView implements Serializable {
     String profile;
 
     String value;
+
+    private String message;
 
     private static int max;
 
@@ -150,4 +154,22 @@ public class ProductView implements Serializable {
             }
         }
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void saveMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
+        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
+    }
+
+
+
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f= "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Test</title>
+</h:head>
+<h:body>
+
+    <h:form>
+        <p:outputLabel>Test</p:outputLabel>
+        <p:outputPanel id="inputPanel2" layout="block" style="width: 600px; height: 40px; display: none;">
+            <p:commandButton value="Button0" widgetVar="saveBtn"/>
+            <p:commandButton value="Button1" widgetVar="saveBtn"/>
+        </p:outputPanel>
+
+        <p:outputPanel id="inputPanel1" layout="block" style="width: 600px; height: 120px; padding-top: 50px; border: ">
+            <p:commandButton value="Show Hidden Buttons9" widgetVar="saveBtn">
+                <p:effect event="click" for="inputPanel2" type="slide">
+                    <f:param name="mode" value="'show'" />
+                    <f:param name="direction" value="'down'" />
+                </p:effect>
+                <p:effect event="blur" for="inputPanel2" type="slide">
+                    <f:param name="mode" value="'hide'" />
+                    <f:param name="direction" value="'down'" />
+                </p:effect>
+            </p:commandButton>
+        </p:outputPanel>
+
+        <p:overlayPanel id="imagePanel" for="imageBtn">
+            <p:commandButton value="Button0" widgetVar="saveBtn"/>
+            <p:commandButton value="Button1" widgetVar="saveBtn"/>
+        </p:overlayPanel>
+        <p:commandButton id="imageBtn" value="Basic" type="button">
+            <p:effect event="click" for="imagePanel" type="slide">
+                <f:param name="mode" value="'show'" />
+                <f:param name="direction" value="'down'" />
+            </p:effect>
+            <p:effect event="blur" for="inputPanel2" type="slide">
+                <f:param name="mode" value="'hide'" />
+                <f:param name="direction" value="'down'" />
+            </p:effect>
+        </p:commandButton>
+
+
+        <p:commandButton icon="fa fa-arrows-alt" oncomplete="PF('sidebar5').show()" />
+
+    </h:form>
+
+
+</h:body>
+</html>

@@ -52,6 +52,7 @@
         </p:layoutUnit>
         <p:layoutUnit position="center">
             <h:form id="form2">
+                <p:growl id="growl" showDetail="true" sticky="true" />
                 <h:outputText value="Center Content" />
                 <p:panelGrid columns="1" layout="grid">
                     <p:outputLabel value="Name:" for="name" />
@@ -63,6 +64,11 @@
                     <p:outputLabel value="Value:" for="value" />
                     <p:inputText id="value" value="#{productView.value}" />
                 </p:panelGrid>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="msg" value="Message:" />
+                    <p:inputText id="msg" value="#{productView.message}" required="true" />
+                </h:panelGrid>
+                <p:commandButton value="Save" actionListener="#{productView.saveMessage}" />
             </h:form>
         </p:layoutUnit>
     </p:layout>

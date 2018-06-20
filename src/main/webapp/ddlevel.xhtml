@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<style type="text/css">
+    .ui-widget, .ui-widget .ui-widget {
+        /*font-size: 50% !important;*/
+        font-family: Lucida Console, monospace;
+    }
+
+    /*.ui-tree.ui-tree-horizontal .ui-tree-toggler {*/
+        /*visibility: hidden;*/
+    /*}*/
+</style>
+
+<ui:param name = "title" value = "Best Selling Cars" />
+
+<h:head>
+    <title>#{title}</title>
+</h:head>
+<h:body>
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true" />
+
+        <h:panelGrid columns="3">
+            <p:tree id="tree1"
+                    value="#{dDropView.root1}"
+                    var="node"
+                    selectionMode="single"
+                    selection="#{dDropView.selectedNode1}"
+                    draggable="true"
+                    droppable="true"
+                    dragdropScope="demo">
+                <p:ajax event="expand" listener="#{dDropView.nodeExpand}" />
+                <p:ajax event="collapse" listener="#{dDropView.nodeCollapse}" />
+                <p:ajax event="dragdrop" listener="#{dDropView.onDragDrop}" />
+                <p:treeNode>
+                    <h:outputText value="#{node}" />
+                </p:treeNode>
+            </p:tree>
+
+            <p:graphicImage alt="Transfer" name="demo/images/transfer.png" />
+
+            <p:tree id="tree2"
+                    value="#{dDropView.root2}"
+                    var="node"
+                    selectionMode="single"
+                    selection="#{dDropView.selectedNode2}"
+                    draggable="true"
+                    droppable="true"
+                    dragdropScope="demo">
+                <p:ajax event="expand" listener="#{dDropView.nodeExpand}" />
+                <p:ajax event="collapse" listener="#{dDropView.nodeCollapse}" />
+                <p:ajax event="dragdrop" listener="#{dDropView.onDragDrop}"/>
+                <p:treeNode>
+                    <h:outputText value="#{node}" />
+                </p:treeNode>
+            </p:tree>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

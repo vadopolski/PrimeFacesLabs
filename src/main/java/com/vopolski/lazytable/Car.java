@@ -1,35 +1,31 @@
-package com.vopolski.car;
+package com.vopolski.lazytable;
+
+import com.vopolski.car.DragDropView;
 
 public class Car {
 
     private String id;
-    private String year;
+    private int year;
     private String color;
     private String brand;
-    private String itemName;
     private String model;
+    private int price;
+    private boolean state;
 
-    public Car(String id, String year, String color, String brand, String model) {
+    public Car(String id, String brand, int year, String color, int price, boolean state) {
         this.id = id;
+        this.brand = brand;
         this.year = year;
         this.color = color;
-        this.brand = brand;
-        this.model = model;
+        this.price = price;
+        this.state = state;
     }
+
 
     @Override public String toString() {
         String result = "";
 
-//        if(year == "" && color == ""){
-//            return brand;
-//        } else {
-//
-//            int difference = DragDropView1.getMax() - brand.length() + 4;
-//
-//            result += "<small>" + brand + "</small>" + "&nbsp; &nbsp; &nbsp; &nbsp;";
-//        }
-
-        if (year == "" && color == "") {
+        if (year == 0 && color == "") {
             return brand;
         }
         else {
@@ -51,16 +47,13 @@ public class Car {
             result += "<small>" + color + "</small>" + "&nbsp;&nbsp;&nbsp;&nbsp;";
         }
 
-        if (year != "") {
+        if (year != 0) {
             result += "<small>" + year + "</small>";
         }
 
         return result;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
 
     public String getId() {
         return id;
@@ -68,14 +61,6 @@ public class Car {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
     }
 
     public String getColor() {
@@ -100,5 +85,29 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }
