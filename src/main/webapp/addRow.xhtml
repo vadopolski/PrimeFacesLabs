@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<style type="text/css">
+    .ui-widget.ui-widget .ui-widget {
+        /*font-size: 50% !important;*/
+        /*font-family: Lucida Console, monospace;*/
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+    }
+
+    .ui-tree.ui-tree-horizontal .ui-tree-toggler {
+        visibility: hidden;
+    }
+</style>
+
+<ui:param name = "title" value = "Best Selling Cars" />
+
+<h:head>
+
+</h:head>
+<h:body>
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true"/>
+
+        <p:dataTable id="cars1" widgetVar="cars1" var="car" value="#{dtAddRowView.cars1}" editable="true" editMode="cell" style="margin-bottom:20px">
+            <f:facet name="header">
+                Row Editing with add functionality
+            </f:facet>
+
+            <p:ajax event="cellEdit" listener="#{dtAddRowView.onCellEdit}" update=":form:msgs" />
+
+            <p:column headerText="Id">
+                <p:cellEditor>
+                    <f:facet name="output"><h:outputText value="#{car.id}" /></f:facet>
+                    <f:facet name="input"><p:inputText id="modelInput" value="#{car.id}" style="width:100%"/></f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <p:column headerText="Year">
+                <p:cellEditor>
+                    <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
+                    <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <p:column style="width:32px">
+                <p:rowEditor />
+            </p:column>
+        </p:dataTable>
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p:commandButton value="Add new row" styleClass="ui-priority-primary" process="@this" update=":form:msgs"
+                                 action="#{dtAddRowView.onAddNew()}" oncomplete="PF('cars1').addRow();"/>
+            </div>
+        </div>
+
+    </h:form>
+
+</h:body>
+</html>
